@@ -8,15 +8,7 @@ let oGameData = {};
 
 window.addEventListener('load', () => {
     initGlobalObject();
-    if(checkForGameOver() === 1) {
-        console.log("Spelare 1 vann");        
-    } else if(checkForGameOver() === 2) {
-        console.log("Spelare 2 vann");
-    } else if(checkForGameOver() === 3) {
-        console.log("Oavgjort");
-    } else {
-        console.log("Spelet fortsätter");
-    }
+    prepGame();
 });
 
 /**
@@ -28,7 +20,7 @@ function initGlobalObject() {
 
     //Datastruktur för vilka platser som är lediga respektive har brickor
     //Genom at fylla i här med antingen X eler O kan ni testa era rättningsfunktioner 
-    oGameData.gameField =['', '', '', '', '', '', '', '', ''];
+    oGameData.gameField =['X', 'X', '', '', '', '', '', '', ''];
     
     /* Testdata för att testa rättningslösning */
     //oGameData.gameField = ['X', 'X', 'X', '', '', '', '', '', ''];
@@ -71,6 +63,9 @@ function initGlobalObject() {
     oGameData.timeRef = document.querySelector("#errorMsg");
 }
 
+console.log(oGameData.gameField);
+
+
 /**
  * Kontrollerar för tre i rad genom att anropa funktionen checkWinner() och checkForDraw().
  * Returnerar 0 om spelet skall fortsätta, 
@@ -79,24 +74,59 @@ function initGlobalObject() {
  * returnerar 3 om det är oavgjort.
  * Funktionen tar inte emot några värden.
  */
-function checkForGameOver() {   
-
+function checkForGameOver() {
+    if (checkWinner('X')){
+        return 1;
+    } else if (checkWinner('O')){
+        return 2;
+    } else if(checkForDraw()) {
+        return 3;
+    } else {
+        return 0;
+    }
 }
 
 // Säg till om ni vill få pseudokod för denna funktion
 // Viktigt att funktionen returnerar true eller false baserat på om den inskickade spelaren är winner eller ej
 function checkWinner(playerIn) {
+    const winningCombos = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+    let isWinner = false;
 
+    for (let combination of winningCombos) {
+        let a = oGameData.gameField[combination[0]];
+        let b = oGameData.gameField[combination[1]];
+        let c = oGameData.gameField[combination[2]];
+
+        if(playerIn === a && playerIn === b && playerIn === c) {
+            isWinner = true;
+            return isWinner;
+        }
+    }
+
+    return isWinner;
 }
 
 //Kontrollera om alla platser i oGameData.GameField är fyllda. Om sant returnera true, annars false.
 function checkForDraw() {
-
+    if(oGameData.gameField.includes('')) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 // Nedanstående funktioner väntar vi med!
 function prepGame() {
-
+    console.log('prepGame()');
 }
 
 function initiateGame() {
