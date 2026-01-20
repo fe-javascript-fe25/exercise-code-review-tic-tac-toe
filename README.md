@@ -68,8 +68,7 @@ Lägg till kod för följande:
   </details>
 * Kontrollera att den klickade cellen är ledig. Om den är ledig, gör följande (annars gör ni inget):
     - Hämta ut attributet "data-id" från den klickade cellen, och använd detta för att sätta "oGameData.gameField" på den hämtade positionen till nuvarande spelare "oGameData.currentPlayer" (som kommer vara "X", eller "O").
-    - Kontrollera vem som är den nuvarande spelaren, och sätt
-    - Kontrollera vem som är nuvarande spelare, och utifrån det sätt bakgrundsfärgen på den klickade tabellcellen till aktuell spelares färg. Sätt även cellens textinnehåll till spelarens symbol ("X" eller "O")
+    - Kontrollera vem som är nuvarande spelare, och utifrån det sätt bakgrundsfärgen på den klickade tabellcellen till aktuell spelares färg. Sätt även cellens textinnehåll till spelarens symbol ("X" eller "O") och spara ner spelarens namn i variabeln name.
     - Ändra därefter oGameData.currentPlayer till den andra spelaren, och uppdatera texten i jumbotronen till den nya spelarens namn
 * Anropa er rättningsfunktion för att kontrollera om spelet är slut (den kommer returnera antingen 1, 2, 3 för slut, eller 0 om spelet inte är slut). Om spelet är slut gör följande (annars gör ni inget):
     - Anropa gameOver och skicka med resultatet (1, 2 eller 3).
