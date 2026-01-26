@@ -85,3 +85,25 @@ Denna funktion tar emot resultatet för spelet (1 om spelare 1 vunnit, 2 och spe
 * Kontrollera vilken spelare som vunnit
 * Skriv ut ett vinnarmeddelande i jumbotronen, följa av "Spela igen?".
 * Anropa funktionen "initGlobalObject()" som nollställer vårt globala objekt till ursprungsinställningarna.
+
+### Tredje etappen
+
+Denna tredje och sista vecka med Tic Tac Toe höjer vi svårighetsgraden något genom att inte ange några detaljerade steg-för-steginstruktioner, utan låter er istället tänka lite själva. 
+Kortfattat så skall ni i "prepGame()" anropa funktionen "validateForm()". Först **efter** att "validateForm()" returnerat **true** så exekverar ni resten av koden i "prepGame()" från förra etappen.
+
+#### validateForm()
+
+Krav för att få spela:
+
+* Användarnamnet måste vara mellan 3 och 10 tecken långt.
+* Användarnamnen för spelare 1 och 2 får ej vara samma.
+* Den valda färgen får inte vara vit eller svart (#FFFFFF / #000000).
+* Sätt det inputfält som orsakat ett eventuellt fel i fokus med .focus().
+* Uppdatera **errorMsg** i jumbotronen med korrekt felmeddelande.
+
+#### timer()
+
+Skapa en timer som ger varje spelare max 5 sekunder på sig att göra sitt drag. Vid överskriden tidsgräns går turen över till motståndaren. Tips! Läs på om funktionen *setTimeout()*
+
+**Bonus!**
+Logga ut i jumbotronen "Tid kvar: 5 / 4 / 3 / 2 / 1 sek kvar". För att lyckas med detta behöver ni istället använda funktionen *setInterval()*.
